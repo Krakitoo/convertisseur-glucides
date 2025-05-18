@@ -82,8 +82,8 @@ export default function Home() {
       </p>
 
       <p style={{ textAlign: "center", marginBottom: 30, fontSize: 13, color: "#aaa" }}>
-        <strong>Glucides</strong> = source d'énergie rapide, essentiels pour l'entraînement et la performance.<br />
-        <strong>Calories</strong> = mesure globale de l'énergie (glucides, lipides, protéines). Priorisez selon votre objectif : perte de poids, prise de masse, etc.
+        <strong>Glucides</strong> = source d’énergie rapide, essentiels pour l’entraînement et la performance.<br />
+        <strong>Calories</strong> = mesure globale de l’énergie (glucides, lipides, protéines). Priorisez selon votre objectif : perte de poids, prise de masse, etc.
       </p>
 
       <div style={{ textAlign: "center", marginBottom: 20 }}>
