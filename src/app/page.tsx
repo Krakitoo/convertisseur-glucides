@@ -21,14 +21,14 @@ type Resultat = {
 };
 
 const aliments: Record<string, Aliment> = {
-  "Riz basmati (cru)": { kcal: 358, glucides: 78, proteines: 8, lipides: 1, ratio: 3.2 },
+  "Riz basmati (cru)": { kcal: 353, glucides: 77.8, proteines: 7.7, lipides: 0.8, ratio: 3.2 },
   "Riz complet (cru)": { kcal: 362, glucides: 76, proteines: 7.5, lipides: 2.2, ratio: 3.1 },
-  "Pâtes blé dur (cru)": { kcal: 353, glucides: 71, proteines: 12, lipides: 1.5, ratio: 2.5 },
-  "Pâtes complètes (cru)": { kcal: 348, glucides: 65, proteines: 13, lipides: 2.5, ratio: 2.4 },
-  "Lentilles vertes (cru)": { kcal: 339, glucides: 52, proteines: 25, lipides: 1.1, ratio: 2.7 },
-  "Lentilles corail (cru)": { kcal: 358, glucides: 60, proteines: 24, lipides: 1.5, ratio: 2.5 },
-  "Quinoa (cru)": { kcal: 368, glucides: 64, proteines: 14, lipides: 5.5, ratio: 2.5 },
-  "Pomme de terre (cru)": { kcal: 77, glucides: 17, proteines: 2, lipides: 0.1, ratio: 1.05 },
+  "Pâtes blé dur (crues)": { kcal: 353, glucides: 71, proteines: 12, lipides: 1.5, ratio: 2.5 },
+  "Pâtes complètes (crues)": { kcal: 348, glucides: 65, proteines: 13, lipides: 2.5, ratio: 2.4 },
+  "Lentilles vertes (crues)": { kcal: 352, glucides: 63.4, proteines: 24.6, lipides: 1.1, ratio: 2.7 },
+  "Lentilles corail (crues)": { kcal: 352, glucides: 63.4, proteines: 24.6, lipides: 1.1, ratio: 2.5 },
+  "Quinoa (cru)": { kcal: 358, glucides: 58.1, proteines: 13.2, lipides: 6.1, ratio: 2.5 },
+  "Pomme de terre (crue)": { kcal: 77, glucides: 17, proteines: 2, lipides: 0.1, ratio: 1.05 },
 };
 
 export default function Home() {
@@ -132,7 +132,10 @@ export default function Home() {
       )}
 
       <footer style={{ marginTop: 60, textAlign: "center", fontSize: 12, color: "#777" }}>
-        © 2025 – Créé par Sullivan BIGAND | Tous droits réservés.
+        <p>© 2025 – Créé par Sullivan BIGAND | Tous droits réservés.</p>
+        <p><a href="https://ciqual.anses.fr/" target="_blank" rel="noopener noreferrer" style={{ color: "#ff1a1a" }}>
+          Données issues de la table officielle Ciqual (ANSES)
+        </a></p>
       </footer>
     </main>
   );
