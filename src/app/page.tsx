@@ -1,6 +1,8 @@
 'use client';
 
+import Image from "next/image";
 import { useState } from "react";
+import logo from "@/public/image krakito.png";
 
 type Aliment = {
   kcal: number;
@@ -62,34 +64,63 @@ export default function Home() {
   };
 
   return (
-    <main style={{ padding: 20 }}>
-      <h1 style={{ fontSize: "24px", fontWeight: "bold" }}>Convertisseur de Glucides</h1>
+    <main style={{ maxWidth: 700, margin: "0 auto", padding: 20, fontFamily: "Arial, sans-serif", backgroundColor: "#121212", color: "#f5f5f5", minHeight: "100vh" }}>
+      <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <Image src={logo} alt="Logo" width={100} height={100} />
+      </div>
 
-      <div style={{ marginTop: 20 }}>
-        <label>Choisissez un aliment :</label><br />
-        <select value={aliment} onChange={(e) => setAliment(e.target.value)}>
+      <h1 style={{ fontSize: "32px", fontWeight: "bold", textAlign: "center", marginBottom: 20, color: "#ff1a1a" }}>
+        Convertisseur de Glucides
+      </h1>
+
+      <div style={{ marginBottom: 20 }}>
+        <label><strong>Choisissez un aliment :</strong></label><br />
+        <select value={aliment} onChange={(e) => setAliment(e.target.value)} style={{ width: "100%", padding: 8 }}>
           {Object.keys(aliments).map((nom) => (
             <option key={nom} value={nom}>{nom}</option>
           ))}
         </select>
       </div>
 
-      <div style={{ marginTop: 10 }}>
-        <label>Quantité (en grammes) :</label><br />
+      <div style={{ marginBottom: 20 }}>
+        <label><strong>Quantité (en grammes) :</strong></label><br />
         <input
           type="number"
           value={quantite}
           onChange={(e) => setQuantite(Number(e.target.value))}
+          style={{ width: "100%", padding: 8 }}
         />
       </div>
 
-      <button onClick={calculer} style={{ marginTop: 10 }}>Calculer</button>
+      <button
+        onClick={calculer}
+        style={{
+          backgroundColor: "#ff1a1a",
+          color: "white",
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: 5,
+          cursor: "pointer",
+          fontSize: "16px",
+        }}
+      >
+        Calculer
+      </button>
 
       {resultats.length > 0 && (
-        <div style={{ marginTop: 30 }}>
-          <h2>Résultats :</h2>
+        <div style={{ marginTop: 40 }}>
+          <h2 style={{ fontSize: "24px", fontWeight: "bold" }}>Résultats équivalents :</h2>
           {resultats.map((res) => (
-            <div key={res.nom} style={{ borderBottom: "1px solid #ccc", marginBottom: 10, paddingBottom: 10 }}>
+            <div
+              key={res.nom}
+              style={{
+                border: "1px solid #333",
+                borderRadius: 8,
+                padding: 15,
+                marginBottom: 15,
+                backgroundColor: "#1e1e1e",
+              }}
+            >
               <strong>{res.nom}</strong><br />
               Quantité crue équivalente : {res.qCrue} g<br />
               Quantité cuite équivalente : {res.qCuire} g<br />
@@ -101,6 +132,10 @@ export default function Home() {
           ))}
         </div>
       )}
+
+      <footer style={{ marginTop: 60, textAlign: "center", fontSize: 12, color: "#777" }}>
+        © 2025 – Créé par Sullivan BIGAND | Tous droits réservés.
+      </footer>
     </main>
   );
 }
