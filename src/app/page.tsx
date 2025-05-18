@@ -75,10 +75,15 @@ export default function Home() {
         Convertisseur de Glucides / Calories
       </h1>
 
-      <p style={{ textAlign: "center", marginBottom: 20, color: "#ccc" }}>
+      <p style={{ textAlign: "center", marginBottom: 10, color: "#ccc" }}>
         Cet outil vous permet de trouver des équivalents alimentaires<br />
         en fonction de votre apport en <strong>{mode === "glucides" ? "glucides" : "calories"}</strong>,
         pour mieux intégrer vos choix dans une diète ou un plan nutritionnel.
+      </p>
+
+      <p style={{ textAlign: "center", marginBottom: 30, fontSize: 13, color: "#aaa" }}>
+        <strong>Glucides</strong> = source d'énergie rapide, essentiels pour l'entraînement et la performance.<br />
+        <strong>Calories</strong> = mesure globale de l'énergie (glucides, lipides, protéines). Priorisez selon votre objectif : perte de poids, prise de masse, etc.
       </p>
 
       <div style={{ textAlign: "center", marginBottom: 20 }}>
@@ -156,6 +161,9 @@ export default function Home() {
         <p>© 2025 – Créé par Sullivan BIGAND | Tous droits réservés.</p>
         <p><a href="https://ciqual.anses.fr/" target="_blank" rel="noopener noreferrer" style={{ color: "#ff1a1a" }}>
           Données issues de la table officielle Ciqual (ANSES)
+        </a></p>
+        <p><a href="https://www.instagram.com/krakitooo/" target="_blank" rel="noopener noreferrer" style={{ color: "#ff1a1a" }}>
+          Suis-moi sur Instagram : @krakitooo
         </a></p>
       </footer>
     </main>
