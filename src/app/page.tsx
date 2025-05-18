@@ -86,7 +86,7 @@ export default function Home() {
         <strong>Calories</strong> = mesure globale de l’énergie (glucides, lipides, protéines). Priorisez selon votre objectif : perte de poids, prise de masse, etc.
       </p>
 
-      <div style={{ textAlign: "center", marginBottom: 20 }}>
+      <div style={{ textAlign: "center", marginBottom: 10 }}>
         <button onClick={() => setMode("glucides")} style={{ marginRight: 10, backgroundColor: mode === "glucides" ? "#ff1a1a" : "#333", color: "white", padding: "6px 12px", border: "none", borderRadius: 5 }}>
           Basé sur glucides
         </button>
@@ -94,6 +94,11 @@ export default function Home() {
           Basé sur calories
         </button>
       </div>
+
+      <p style={{ textAlign: "center", marginBottom: 30, fontSize: 13, color: "#aaa" }}>
+        👉 <strong>Basé sur les glucides :</strong> vous verrez les quantités d’aliments qui apportent le même total de glucides que l’aliment de référence.<br />
+        👉 <strong>Basé sur les calories :</strong> vous verrez les quantités d’aliments qui apportent le même total calorique que l’aliment de référence.
+      </p>
 
       <div style={{ marginBottom: 20 }}>
         <label><strong>Choisissez un aliment :</strong></label><br />
