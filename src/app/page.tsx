@@ -1,8 +1,6 @@
 'use client';
 
-import Image from "next/image";
 import { useState } from "react";
-import logo from "@/public/image krakito.png";
 
 type Aliment = {
   kcal: number;
@@ -66,7 +64,7 @@ export default function Home() {
   return (
     <main style={{ maxWidth: 700, margin: "0 auto", padding: 20, fontFamily: "Arial, sans-serif", backgroundColor: "#121212", color: "#f5f5f5", minHeight: "100vh" }}>
       <div style={{ textAlign: "center", marginBottom: 20 }}>
-        <Image src={logo} alt="Logo" width={100} height={100} />
+        <img src="/image krakito.png" alt="Logo" width={100} height={100} />
       </div>
 
       <h1 style={{ fontSize: "32px", fontWeight: "bold", textAlign: "center", marginBottom: 20, color: "#ff1a1a" }}>
