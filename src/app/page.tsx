@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState } from "react";
 
@@ -8,6 +8,16 @@ type Aliment = {
   proteines: number;
   lipides: number;
   ratio: number;
+};
+
+type Resultat = {
+  nom: string;
+  qCrue: string;
+  qCuire: string;
+  glucides: string;
+  proteines: string;
+  lipides: string;
+  kcal: string;
 };
 
 const aliments: Record<string, Aliment> = {
@@ -24,7 +34,7 @@ const aliments: Record<string, Aliment> = {
 export default function Home() {
   const [aliment, setAliment] = useState("Riz basmati (cru)");
   const [quantite, setQuantite] = useState(100);
-  const [resultats, setResultats] = useState<any[]>([]);
+  const [resultats, setResultats] = useState<Resultat[]>([]);
 
   const calculer = () => {
     const ref = aliments[aliment];
