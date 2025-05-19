@@ -76,7 +76,7 @@ export default function Page() {
     const res = filtres.map(([nom, val]) => {
       const refNutri = mode === 'glucides' ? val.glucides : mode === 'proteines' ? val.proteines : val.kcal;
       const qCrue = (valeurRef * 100) / refNutri;
-      const qCuire = qCrue * val.ratio;
+      const qCuire = val.cuisson === 'neutre' ? '-' : (qCrue * val.ratio).toFixed(1);
       const glucides = (qCrue * val.glucides) / 100;
       const proteines = (qCrue * val.proteines) / 100;
       let lipides = (qCrue * val.lipides) / 100;
@@ -86,7 +86,7 @@ export default function Page() {
       return {
         nom,
         qCrue: qCrue.toFixed(1),
-        qCuire: val.cuisson === 'neutre' ? '-' : qCuire.toFixed(1),
+        qCuire,
         glucides: glucides.toFixed(1),
         proteines: proteines.toFixed(1),
         lipides: lipides.toFixed(1),
@@ -115,7 +115,7 @@ export default function Page() {
         <p><strong>Glucides</strong> = énergie rapide (riz, flocons, lentilles…)</p>
         <p><strong>Protéines</strong> = muscles & récupération (viandes, poissons…)</p>
         <p><strong>Calories</strong> = total énergétique (glucides + prot + lipides)</p>
-        <p><strong>CUISSON :</strong> Les aliments comme les pâtes prennent de l'eau (poids ↑), les viandes en perdent (poids ↓). Les valeurs nutritionnelles sont celles du cru. Seul le poids varie !</p>
+        <p><strong>CUISSON :</strong> Les aliments comme les pâtes prennent de l&apos;eau (poids ↑), les viandes en perdent (poids ↓). Les valeurs nutritionnelles sont celles du cru. Seul le poids varie !</p>
       </section>
 
       <div className="mb-4">
@@ -132,7 +132,7 @@ export default function Page() {
 
       <div className="mb-4">
         <label>Objectif :</label>
-        <select value={mode} onChange={(e) => setMode(e.target.value as any)} className="w-full p-2 bg-zinc-800 rounded">
+        <select value={mode} onChange={(e) => setMode(e.target.value as 'glucides' | 'kcal' | 'proteines')} className="w-full p-2 bg-zinc-800 rounded">
           {categorie === 'glucide' && (
             <>
               <option value="glucides">Glucides</option>
