@@ -47,7 +47,7 @@ const aliments: Record<string, Aliment> = {
   "Saumon (cru)": { kcal: 206, glucides: 0, proteines: 20, lipides: 13, ratio: 1.0, categorie: 'proteine' },
   "Thon naturel (boîte)": { kcal: 113, glucides: 0, proteines: 25, lipides: 1, ratio: 1.0, categorie: 'proteine' },
   "Cabillaud (cru)": { kcal: 82, glucides: 0, proteines: 18, lipides: 0.7, ratio: 1.0, categorie: 'proteine' },
-  "Crevettes (cuites)": { kcal: 90, glucides: 0.9, proteines: 19, lipides: 1, ratio: 1.0, categorie: 'proteine' }
+  "Crevettes (cuites)": { kcal: 90, glucides: 0.9, proteines: 19, lipides: 1, ratio: 1.0, categorie: 'proteine' },
 };
 
 export default function Page() {
@@ -64,7 +64,7 @@ export default function Page() {
   const [activite, setActivite] = useState(1.55);
   const [dej, setDej] = useState<number | null>(null);
 
-  const alimentsFiltres = Object.entries(aliments).filter(([_, a]) => a.categorie === categorie);
+  const alimentsFiltres = Object.entries(aliments).filter(([, a]) => a.categorie === categorie);
 
   const calculer = () => {
     const ref = aliments[aliment];
@@ -78,8 +78,8 @@ export default function Page() {
       const cible = mode === 'glucides' ? val.glucides : mode === 'proteines' ? val.proteines : val.kcal;
       const qCrue = (valeurRef * 100) / cible;
       const qCuire = qCrue * val.ratio;
-      let g2 = (qCrue * val.glucides) / 100;
-      let p2 = (qCrue * val.proteines) / 100;
+      const g2 = (qCrue * val.glucides) / 100;
+      const p2 = (qCrue * val.proteines) / 100;
       let l2 = (qCrue * val.lipides) / 100;
       let k2 = (qCrue * val.kcal) / 100;
       if (avecHuile) { l2 += 10; k2 += 90; }
@@ -93,6 +93,7 @@ export default function Page() {
         kcal: k2.toFixed(1)
       };
     });
+
     setResultats(resultatsEquivalents);
   };
 
@@ -123,7 +124,7 @@ export default function Page() {
         <label>Mode :</label>
         <div className="flex gap-2 mt-1">
           {(categorie === 'glucide' ? ['glucides', 'kcal'] : ['proteines', 'kcal']).map((m) => (
-            <button key={m} onClick={() => setMode(m as any)} className={`flex-1 p-2 rounded ${mode === m ? 'bg-red-600' : 'bg-zinc-800'}`}>{m}</button>
+            <button key={m} onClick={() => setMode(m as 'glucides' | 'kcal' | 'proteines')} className={`flex-1 p-2 rounded ${mode === m ? 'bg-red-600' : 'bg-zinc-800'}`}>{m}</button>
           ))}
         </div>
       </div>
@@ -166,7 +167,7 @@ export default function Page() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
             <label>Sexe :</label>
-            <select value={sexe} onChange={(e) => setSexe(e.target.value as any)} className="w-full p-2 rounded bg-zinc-800">
+            <select value={sexe} onChange={(e) => setSexe(e.target.value as 'homme' | 'femme')} className="w-full p-2 rounded bg-zinc-800">
               <option value="homme">Homme</option>
               <option value="femme">Femme</option>
             </select>
