@@ -10,6 +10,7 @@ type Aliment = {
   lipides: number;
   ratio: number;
   categorie: 'glucide' | 'proteine';
+  cuisson: 'gain_eau' | 'perte_eau' | 'neutre';
 };
 
 type Resultat = {
@@ -17,35 +18,35 @@ type Resultat = {
   qCrue: string;
   qCuire: string;
   glucides: string;
-  proteinesCrues: string;
-  proteinesCuites: string;
+  proteines: string;
   lipides: string;
   kcal: string;
 };
 
 const aliments: Record<string, Aliment> = {
   // Glucides
-  "Riz basmati (cru)": { kcal: 353, glucides: 77.8, proteines: 7.7, lipides: 0.8, ratio: 3.2, categorie: 'glucide' },
-  "Riz complet (cru)": { kcal: 362, glucides: 76, proteines: 7.5, lipides: 2.2, ratio: 3.1, categorie: 'glucide' },
-  "Pâtes complètes (crues)": { kcal: 348, glucides: 65, proteines: 13, lipides: 2.5, ratio: 2.5, categorie: 'glucide' },
-  "Lentilles (crues)": { kcal: 352, glucides: 63.4, proteines: 24.6, lipides: 1.1, ratio: 2.5, categorie: 'glucide' },
-  "Patate douce (crue)": { kcal: 86, glucides: 20.1, proteines: 1.6, lipides: 0.1, ratio: 2.5, categorie: 'glucide' },
-  "Flocons d’avoine": { kcal: 367, glucides: 58.7, proteines: 13.5, lipides: 7, ratio: 2.1, categorie: 'glucide' },
-  "Pain complet": { kcal: 247, glucides: 41.5, proteines: 8.4, lipides: 2.1, ratio: 1.0, categorie: 'glucide' },
-  "Pomme de terre (crue)": { kcal: 77, glucides: 17.5, proteines: 2, lipides: 0.1, ratio: 1.5, categorie: 'glucide' },
-  "Boulgour (cru)": { kcal: 342, glucides: 76.5, proteines: 12.3, lipides: 1.3, ratio: 2.5, categorie: 'glucide' },
-  "Quinoa (cru)": { kcal: 368, glucides: 64.2, proteines: 14.1, lipides: 6.1, ratio: 2.5, categorie: 'glucide' },
+  "Riz basmati (cru)": { kcal: 353, glucides: 77.8, proteines: 7.7, lipides: 0.8, ratio: 3.2, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Riz complet (cru)": { kcal: 362, glucides: 76, proteines: 7.5, lipides: 2.2, ratio: 3.1, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Pâtes complètes (crues)": { kcal: 348, glucides: 65, proteines: 13, lipides: 2.5, ratio: 2.5, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Pâtes blé dur (crues)": { kcal: 360, glucides: 72, proteines: 12, lipides: 1.5, ratio: 2.5, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Lentilles (crues)": { kcal: 352, glucides: 63.4, proteines: 24.6, lipides: 1.1, ratio: 2.5, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Patate douce (crue)": { kcal: 86, glucides: 20.1, proteines: 1.6, lipides: 0.1, ratio: 2.5, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Flocons d’avoine": { kcal: 367, glucides: 58.7, proteines: 13.5, lipides: 7, ratio: 2.1, categorie: 'glucide', cuisson: 'neutre' },
+  "Pain complet": { kcal: 247, glucides: 41.5, proteines: 8.4, lipides: 2.1, ratio: 1.0, categorie: 'glucide', cuisson: 'neutre' },
+  "Pomme de terre (crue)": { kcal: 77, glucides: 17.5, proteines: 2, lipides: 0.1, ratio: 1.5, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Boulgour (cru)": { kcal: 342, glucides: 76.5, proteines: 12.3, lipides: 1.3, ratio: 2.5, categorie: 'glucide', cuisson: 'gain_eau' },
+  "Quinoa (cru)": { kcal: 368, glucides: 64.2, proteines: 14.1, lipides: 6.1, ratio: 2.5, categorie: 'glucide', cuisson: 'gain_eau' },
 
   // Protéines
-  "Blanc de poulet (cru)": { kcal: 110, glucides: 0, proteines: 23.5, lipides: 1.2, ratio: 0.75, categorie: 'proteine' },
-  "Escalope de dinde (crue)": { kcal: 105, glucides: 0, proteines: 24, lipides: 1.0, ratio: 0.75, categorie: 'proteine' },
-  "Steak haché 5% (cru)": { kcal: 133, glucides: 0, proteines: 21, lipides: 5, ratio: 0.8, categorie: 'proteine' },
-  "Saumon (cru)": { kcal: 206, glucides: 0, proteines: 20, lipides: 13, ratio: 0.85, categorie: 'proteine' },
-  "Oeuf entier (60g)": { kcal: 90, glucides: 0.6, proteines: 7.5, lipides: 6.5, ratio: 1.0, categorie: 'proteine' },
-  "Tofu ferme nature": { kcal: 126, glucides: 1.6, proteines: 13, lipides: 7.7, ratio: 1.0, categorie: 'proteine' },
-  "Cabillaud (cru)": { kcal: 82, glucides: 0, proteines: 18.1, lipides: 0.7, ratio: 0.8, categorie: 'proteine' },
-  "Thon en boîte (égoutté)": { kcal: 169, glucides: 0, proteines: 28.6, lipides: 6, ratio: 1.0, categorie: 'proteine' },
-  "Fromage blanc 0%": { kcal: 46, glucides: 3.6, proteines: 8.4, lipides: 0.2, ratio: 1.0, categorie: 'proteine' }
+  "Blanc de poulet (cru)": { kcal: 110, glucides: 0, proteines: 23.5, lipides: 1.2, ratio: 0.75, categorie: 'proteine', cuisson: 'perte_eau' },
+  "Escalope de dinde (cru)": { kcal: 105, glucides: 0, proteines: 24, lipides: 1.0, ratio: 0.75, categorie: 'proteine', cuisson: 'perte_eau' },
+  "Steak haché 5% (cru)": { kcal: 133, glucides: 0, proteines: 21, lipides: 5, ratio: 0.8, categorie: 'proteine', cuisson: 'perte_eau' },
+  "Saumon (cru)": { kcal: 206, glucides: 0, proteines: 20, lipides: 13, ratio: 0.85, categorie: 'proteine', cuisson: 'perte_eau' },
+  "Oeuf entier (60g)": { kcal: 90, glucides: 0.6, proteines: 7.5, lipides: 6.5, ratio: 1.0, categorie: 'proteine', cuisson: 'neutre' },
+  "Tofu ferme nature": { kcal: 126, glucides: 1.6, proteines: 13, lipides: 7.7, ratio: 1.0, categorie: 'proteine', cuisson: 'neutre' },
+  "Cabillaud (cru)": { kcal: 82, glucides: 0, proteines: 18.1, lipides: 0.7, ratio: 0.8, categorie: 'proteine', cuisson: 'perte_eau' },
+  "Thon en boîte (egoutté)": { kcal: 169, glucides: 0, proteines: 28.6, lipides: 6, ratio: 1.0, categorie: 'proteine', cuisson: 'neutre' },
+  "Fromage blanc 0%": { kcal: 46, glucides: 3.6, proteines: 8.4, lipides: 0.2, ratio: 1.0, categorie: 'proteine', cuisson: 'neutre' }
 };
 
 export default function Page() {
@@ -77,19 +78,17 @@ export default function Page() {
       const qCrue = (valeurRef * 100) / refNutri;
       const qCuire = qCrue * val.ratio;
       const glucides = (qCrue * val.glucides) / 100;
-      const proteinesCrues = (qCrue * val.proteines) / 100;
-      const proteinesCuites = qCuire > 0 ? (proteinesCrues / qCuire) * 100 : 0;
+      const proteines = (qCrue * val.proteines) / 100;
       let lipides = (qCrue * val.lipides) / 100;
       let kcal = (qCrue * val.kcal) / 100;
-      if (avecHuile) { lipides += 10; kcal += 90; }
+      if (avecHuile && val.categorie === 'proteine') { lipides += 10; kcal += 90; }
 
       return {
         nom,
         qCrue: qCrue.toFixed(1),
-        qCuire: qCuire.toFixed(1),
+        qCuire: val.cuisson === 'neutre' ? '-' : qCuire.toFixed(1),
         glucides: glucides.toFixed(1),
-        proteinesCrues: proteinesCrues.toFixed(1),
-        proteinesCuites: proteinesCuites.toFixed(1),
+        proteines: proteines.toFixed(1),
         lipides: lipides.toFixed(1),
         kcal: kcal.toFixed(1)
       };
@@ -116,8 +115,7 @@ export default function Page() {
         <p><strong>Glucides</strong> = énergie rapide (riz, flocons, lentilles…)</p>
         <p><strong>Protéines</strong> = muscles & récupération (viandes, poissons…)</p>
         <p><strong>Calories</strong> = total énergétique (glucides + prot + lipides)</p>
-        <p><strong>CRU / CUIT :</strong> Les viandes perdent de l’eau à la cuisson (poids ↓), les pâtes en absorbent (poids ↑). Ce site ajuste automatiquement les quantités pour t’afficher des comparaisons cohérentes.</p>
-        <p><strong>Exemple :</strong> 100g cru de poulet = 75g cuit ≈ 23g prot. L&apos;affichage s’adapte selon le ratio.</p>
+        <p><strong>CUISSON :</strong> Les aliments comme les pâtes prennent de l'eau (poids ↑), les viandes en perdent (poids ↓). Les valeurs nutritionnelles sont celles du cru. Seul le poids varie !</p>
       </section>
 
       <div className="mb-4">
@@ -134,7 +132,7 @@ export default function Page() {
 
       <div className="mb-4">
         <label>Objectif :</label>
-        <select value={mode} onChange={(e) => setMode(e.target.value as 'glucides' | 'kcal' | 'proteines')} className="w-full p-2 bg-zinc-800 rounded">
+        <select value={mode} onChange={(e) => setMode(e.target.value as any)} className="w-full p-2 bg-zinc-800 rounded">
           {categorie === 'glucide' && (
             <>
               <option value="glucides">Glucides</option>
@@ -176,11 +174,12 @@ export default function Page() {
           {resultats.map((res) => (
             <div key={res.nom} className="p-4 bg-zinc-800 rounded mb-4">
               <strong>{res.nom}</strong><br />
-              Cru : {res.qCrue} g – Cuit : {res.qCuire} g<br />
+              Quantité crue : {res.qCrue} g<br />
+              {res.qCuire !== '-' && <>Poids cuit estimé : {res.qCuire} g<br /></>}
               Glucides : {res.glucides} g<br />
-              Protéines : {res.proteinesCrues} g (toujours)<br />
-              → Cela correspond à {res.proteinesCuites} g pour 100 g de produit cuit<br />
-              Lipides : {res.lipides} g | Kcal : {res.kcal}
+              Protéines : {res.proteines} g<br />
+              Lipides : {res.lipides} g<br />
+              Kcal : {res.kcal}
             </div>
           ))}
         </div>
@@ -220,4 +219,4 @@ export default function Page() {
       </footer>
     </main>
   );
-  }
+}
