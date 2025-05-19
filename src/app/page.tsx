@@ -117,7 +117,7 @@ export default function Page() {
         <p><strong>Protéines</strong> = muscles & récupération (viandes, poissons…)</p>
         <p><strong>Calories</strong> = total énergétique (glucides + prot + lipides)</p>
         <p><strong>CRU / CUIT :</strong> Les viandes perdent de l’eau à la cuisson (poids ↓), les pâtes en absorbent (poids ↑). Ce site ajuste automatiquement les quantités pour t’afficher des comparaisons cohérentes.</p>
-        <p><strong>Exemple :</strong> 100g cru de poulet = 75g cuit ≈ 23g prot. L'affichage s’adapte selon le ratio.</p>
+        <p><strong>Exemple :</strong> 100g cru de poulet = 75g cuit ≈ 23g prot. L&apos;affichage s’adapte selon le ratio.</p>
       </section>
 
       <div className="mb-4">
@@ -134,7 +134,7 @@ export default function Page() {
 
       <div className="mb-4">
         <label>Objectif :</label>
-        <select value={mode} onChange={(e) => setMode(e.target.value as any)} className="w-full p-2 bg-zinc-800 rounded">
+        <select value={mode} onChange={(e) => setMode(e.target.value as 'glucides' | 'kcal' | 'proteines')} className="w-full p-2 bg-zinc-800 rounded">
           {categorie === 'glucide' && (
             <>
               <option value="glucides">Glucides</option>
@@ -220,4 +220,4 @@ export default function Page() {
       </footer>
     </main>
   );
-}
+  }
